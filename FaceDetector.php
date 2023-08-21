@@ -48,16 +48,16 @@ class FaceDetector
             $this->detection_data = $detection_data;
             return;
         }
-    
+
         if (!is_file($detection_data)) {
             // fallback to same file in this class's directory
             $detection_data = dirname(__FILE__) . DIRECTORY_SEPARATOR . $detection_data;
-            
+
             if (!is_file($detection_data)) {
                 throw new \Exception("Couldn't load detection data");
             }
         }
-        
+
         $this->detection_data = unserialize(file_get_contents($detection_data));
     }
 
@@ -74,7 +74,7 @@ class FaceDetector
         } elseif (is_string($file)) {
 
             $this->canvas = imagecreatefromstring($file);
-            
+
         } else {
 
             throw new Exception("Can not load $file");
